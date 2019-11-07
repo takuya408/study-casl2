@@ -1,0 +1,11 @@
+SUM2      START	;二つの数の和
+;
+          LD      GR1,A
+          ADDA    GR1,B
+          ST      GR1,C
+          RET
+;
+A         DC      107
+B         DC      259
+C         DS      1
+          END

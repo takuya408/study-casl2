@@ -1,0 +1,12 @@
+NUM       START
+          LD      GR1,X
+          LAD     GR0,0
+LOOP      LD      GR2,GR1
+          AND     GR2,C1
+          ADDL    GR0,GR2
+          SRL     GR1,1
+          JNZ     LOOP
+          RET
+X         DC      #ABCD
+C1        DC      1
+          END
