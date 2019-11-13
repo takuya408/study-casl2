@@ -1,15 +1,15 @@
-ARYSUM    START	; 配列の和を求める
-          LAD     GR1,0	; くりかえし回数
-          LAD     GR2,0	; 合計
-          LAD     GR3,1	; 定数１
-          LD      GR4,NUM	; 繰り返し限度
-LOOP      ADDA    GR2,A,GR1	; 配列の値を加える
-          ADDA    GR1,GR3	; 繰り返し数を増加
-          CPA     GR1,GR4	; 回数判断
-          JMI     LOOP	; 負なら繰り返
-          ST      GR2,SUM	; 合計を保存
+ARYSUM    START	;配列の和を求める
+          LAD     GR1,0	;くりかえし回数
+          LAD     GR2,0	;合計
+          LAD     GR3,1	;定数１
+          LD      GR4,NUM	;繰り返し限度
+LOOP      ADDA    GR2,A,GR1	;配列の値を加える
+          ADDA    GR1,GR3	;繰り返し数を増加
+          CPA     GR1,GR4	;回数判断
+          JMI     LOOP	;負なら繰り返
+          ST      GR2,SUM	;合計を保存
           RET
 SUM       DS      1	;和
-NUM       DC      5	; 繰り返し上限
-A         DC      31,41,59,26,53	; 配列データ
+NUM       DC      5	;繰り返し上限
+A         DC      31,41,59,26,53	;配列データ
           END
