@@ -1,0 +1,10 @@
+MULTIPLI  START	;二つの数の積
+          LD      GR2,N
+LOOP      JZE     STOP
+          ADDA    GR1,M	;GR1 = GR1 + M
+          SUBA    GR2,=1	;GR2 = GR2 - 1
+          JUMP    LOOP
+STOP      RET
+M         DC      3
+N         DC      2
+          END
