@@ -1,0 +1,17 @@
+EXAM      START
+          LAD     GR0,0
+          LAD     GR1,0
+LOOP1     LD      GR2,A,GR1
+LOOP2     LD      GR3,GR2
+          AND     GR3,ONE
+          ADDA    GR0,GR3
+          SRL     GR2,1
+          JNZ     LOOP2
+          ADDA    GR1,ONE
+          CPA     GR1,SIZE
+          JMI     LOOP1
+          RET
+ONE       DC      1
+SIZE      DC      3
+A         DC      #2017,#12,#11
+          END
