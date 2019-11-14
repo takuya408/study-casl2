@@ -1,7 +1,7 @@
 MULTIPL2  START
           LD      GR1,M
           LD      GR2,N
-LOOP      LD      GR3,GR2	;GR3=GR2
+LOOP      LD      GR3,GR2	;GR3 = GR2
           AND     GR3,=1	;Nが奇数か判定する
           CPA     GR3,=0	;掛ける数と0を比較
           JZE     EVEN	;Nが偶数ならEVENに移動
