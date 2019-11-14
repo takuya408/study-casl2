@@ -1,18 +1,18 @@
 MULTIPL2  START
-          LD      GR1,M
-          LD      GR2,N
-LOOP      LD      GR3,GR2	;GR3 = GR2
-          AND     GR3,=1	;Nが奇数か判定する
-          CPA     GR3,=0	;掛ける数と0を比較
+          LD      GR2,M
+          LD      GR3,N
+LOOP      LD      GR4,GR3	;GR4 = GR3
+          AND     GR4,=1	;Nが奇数か判定する
+          CPA     GR4,=0	;掛ける数と0を比較
           JZE     EVEN	;Nが偶数ならEVENに移動
-          ADDA    GR0,GR1	;Nが奇数ならGR0（答え）に1を足す
-EVEN      SLL     GR1,1	;GR1を左シフト
-          SRL     GR2,1	;GR2を右シフト
-          CPA     GR2,=0	;掛ける数と0を比較
-          JNZ     LOOP	;掛ける数が0でないならLOOPに移動
-          ST      GR0,ANS
+          ADDA    GR1,GR2	;Nが奇数ならGR1（答え）に1を足す
+EVEN      SLL     GR2,1	;GR2を左シフト
+          SRL     GR3,1	;GR3を右シフト
+          CPA     GR3,=0	;掛ける数と0を比較
+          JNZ     LOOP	;掛ける数が0でない場合はLOOPに移動
+          ST      GR1,ANS
           RET
 M         DC      3	;掛けられる数
 N         DC      2	;掛ける数
-ANS       DS      1	;積
+ANS       DS      2	;積
           END
