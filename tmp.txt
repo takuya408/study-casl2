@@ -1,0 +1,23 @@
+01．	MAIN      START	;二つの数の積（シフト演算）
+02．	          LD      GR2,M	;GR2 = M
+03．	          LD      GR3,N	;GR3 = N
+04．	          CALL    MULTIPL2	;乗算のサブルーチンを呼び出す
+05．	          ST      GR1,ANS	;GR1に答えを代入
+06．	          RET
+07．
+08．	MULTIPL2  LAD     GR1,0	;GR1を計算用に初期化
+09．	LOOP      LD      GR4,GR3	;GR4 = GR3
+10．	          AND     GR4,=#0001	;Nが奇数か判定する
+11．	          CPA     GR4,=0	;Nと0を比較
+12．	          JZE     EVEN	;Nが0（偶数）ならEVENに移動
+13．	          ADDA    GR1,GR2	;Nが奇数ならGR1（答え）に1を足す
+14．	EVEN      SLL     GR2,1	;GR2を左シフト
+15．	          SRL     GR3,1	;GR3を右シフト
+16．	          CPA     GR3,=0	;Nと0を比較
+17．	          JNZ     LOOP	;Nが0でないならLOOPにジャンプ
+18．	          RET
+19．
+20．	M         DC      3	;掛けられる数
+21．	N         DC      2	;掛ける数
+22．	ANS       DS      2	;計算用レジスタを指定
+23．	          END
