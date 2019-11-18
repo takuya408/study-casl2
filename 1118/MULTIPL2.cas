@@ -1,23 +1,23 @@
 MAIN      START	;二つの数の積（シフト演算）
-          LD      GR2,M
-          LD      GR3,N
-          CALL    MULTIPL2
-          ST      GR1,ANS
+          LD      GR2,M	;GR2 = M
+          LD      GR3,N	;GR3 = N
+          CALL    MULTIPL2	;乗算のサブルーチンを呼び出す
+          ST      GR1,ANS	;GR1に答えを代入
           RET
 
-MULTIPL2  LAD     GR1,0	;GR1を積格納用に初期化
-LOOP      LD      GR4,GR3	;編集用に掛ける数をGR4に転送
-          AND     GR4,=#0001	;掛ける数の1ビット目が1か0か判定
-          CPA     GR4,=0	;掛ける数と0を比較
-          JZE     EVEN	;掛ける数が0ならEVENに移動
-          ADDA    GR1,GR2
-EVEN      SLL     GR2,1
-          SRL     GR3,1
-          CPA     GR3,=0	;掛ける数と0を比較
-          JNZ     LOOP	;掛ける数が0でないならLOOPに移動
+MULTIPL2  LAD     GR1,0	;GR1を計算用に初期化
+LOOP      LD      GR4,GR3	;GR4 = GR3
+          AND     GR4,=#0001	;Nが奇数か判定する
+          CPA     GR4,=0	;Nと0を比較
+          JZE     EVEN	;Nが0（偶数）ならEVENに移動
+          ADDA    GR1,GR2	;Nが奇数ならGR1（答え）に1を足す
+EVEN      SLL     GR2,1	;GR2を左シフト
+          SRL     GR3,1	;GR3を右シフト
+          CPA     GR3,=0	;Nと0を比較
+          JNZ     LOOP	;Nが0でないならLOOPにジャンプ
           RET
 
 M         DC      3	;掛けられる数
 N         DC      2	;掛ける数
-ANS       DS      2	;積
+ANS       DS      2	;計算用レジスタを指定
           END
