@@ -1,0 +1,23 @@
+MAIN      START	;二つの数の積（シフト演算）
+          LD      GR2,M
+          LD      GR3,N
+          CALL    MULTIPL2
+          ST      GR1,ANS
+          RET
+
+MULTIPL2  LAD     GR1,0	;GR1を積格納用に初期化
+LOOP      LD      GR4,GR3	;編集用に掛ける数をGR4に転送
+          AND     GR4,=#0001	;掛ける数の1ビット目が1か0か判定
+          CPA     GR4,=0	;掛ける数と0を比較
+          JZE     EVEN	;掛ける数が0ならEVENに移動
+          ADDA    GR1,GR2
+EVEN      SLL     GR2,1
+          SRL     GR3,1
+          CPA     GR3,=0	;掛ける数と0を比較
+          JNZ     LOOP	;掛ける数が0でないならLOOPに移動
+          RET
+
+M         DC      3	;掛けられる数
+N         DC      2	;掛ける数
+ANS       DS      2	;積
+          END
